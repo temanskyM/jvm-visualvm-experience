@@ -3,29 +3,53 @@ package ru.netology;
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
 
+import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 public class JvmExperience {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
         System.out.println("Please open 'ru.netology.JvmExperience' in VisualVm");
         Thread.sleep(30_000);
+        System.out.println("1");
+        System.out.println("Started at: "+ LocalTime.now());
+        loadToMetaspaceAllFrom("io.vertx");                                //1
+        System.out.println("Finished at: "+ LocalTime.now());
 
-        loadToMetaspaceAllFrom("io.vertx");
         Thread.sleep(3_000);
-        loadToMetaspaceAllFrom("io.netty");
+        System.out.println("2");
+        System.out.println("Started at: "+ LocalTime.now());
+        loadToMetaspaceAllFrom("io.netty");                                //2
+        System.out.println("Finished at: "+ LocalTime.now());
+
         Thread.sleep(3_000);
-        loadToMetaspaceAllFrom("org.springframework");
+        System.out.println("3");
+        System.out.println("Started at: "+ LocalTime.now());
+        loadToMetaspaceAllFrom("org.springframework");                     //3
+        System.out.println("Finished at: "+ LocalTime.now());
+
         Thread.sleep(3_000);
 
         System.out.println(LocalTime.now() + ": now see heap");
-        List<SimpleObject> simpleObjects = createSimpleObjects(5_000_000);
+        System.out.println("4");
+        System.out.println("Started at: "+ LocalTime.now());
+        List<SimpleObject> simpleObjects = createSimpleObjects(5_000_000);       //4
+        System.out.println("Finished at: "+ LocalTime.now());
+
         Thread.sleep(3_000);
-        simpleObjects.addAll(createSimpleObjects(5_000_000));
+        System.out.println("5");
+        System.out.println("Started at: "+ LocalTime.now());
+        simpleObjects.addAll(createSimpleObjects(5_000_000));                    //5
+        System.out.println("Finished at: "+ LocalTime.now());
+
         Thread.sleep(3_000);
-        simpleObjects.addAll(createSimpleObjects(5_000_000));
+        System.out.println("6");
+        System.out.println("Started at: "+ LocalTime.now());
+        simpleObjects.addAll(createSimpleObjects(5_000_000));                    //6
+        System.out.println("Finished at: "+ LocalTime.now());
         Thread.sleep(3_000);
     }
 
